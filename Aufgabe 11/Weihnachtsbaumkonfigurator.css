@@ -1,0 +1,70 @@
+/*
+Aufgabe: A10, Weihnachtsbaumkonfigurator
+Name: Adriana Gudic
+Matrikel: 256217
+Datum: 05.01.2018
+    
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+*/
+
+
+body {
+	float: left;
+	font-family: "Helvetica";
+	background-color: #ffffff;
+	color: black;
+	font-size: 1em;
+	width: 100%;
+	margin-left: 4em;
+}
+
+h1 {
+	color: white;
+	font-size: 2em;
+	background-color: #008040;
+	padding: 1em;
+}
+
+h2 {
+	font-size: 1.2em;
+}
+
+input:invalid {
+	background: #ff6666;
+}
+
+label::after {
+	display: block;
+}
+
+input {
+	margin: 0.5em;
+}
+
+button {
+	background-color: #ff6666;
+	color: white;
+    padding: 0.3em;
+    text-align: center;
+    display: inline-block;
+    font-size: 1em;
+    margin: 0.02em;
+    cursor: pointer;
+}
+#daten input {
+	display: block;
+	height: 10%;
+	width: 15%;
+}
+
+#zusammenfassung {
+	position: fixed;
+	right: 0em;
+	top: 0em;
+	color: white;
+	padding: 1em;
+}
+
+.wk {
+	font-size: 1.2em;
+}
