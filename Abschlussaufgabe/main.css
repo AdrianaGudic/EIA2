@@ -1,0 +1,19 @@
+@media only screen and (max-width: 1000px) {
+	#box0,#box1,#box2,#box3{
+		width:60% !Important;
+		left:10% !Important;
+		height:1em !Important;
+		
+	}
+	#box0{
+		top:10em !Important;
+	}
+	#box1{
+		top:14em !Important;
+	}
+	#box2{
+		top:18em !Important;
+	}
+	#box3{
+		top:22em !Important;
+	}
