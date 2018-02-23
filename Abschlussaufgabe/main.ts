@@ -2,7 +2,7 @@
 Aufgabe: Abschlussaufgabe
 Name: Adriana Gudic
 Matrikel: 256217
-Datum: -
+Datum: 23.02.2018
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
@@ -11,23 +11,32 @@ namespace Abschlussaufgabe {
 
     export let crc2: CanvasRenderingContext2D;
     window.addEventListener("load", init);
-    let snowClass: SnowInfo[] = [];
+    let konfettiClass: konfettiInfo[] = [];
     let buttons: string;
     let soundPlay1: SoundPlay;
     let soundPlay2: SoundPlay;
     let soundPlay3: SoundPlay;
     let soundPlay4: SoundPlay;
     let imgData: ImageData;
+    let logo: any = new Image();
     let morty: Morty;
-    
+
 
     function init(): void {
         alert("Click the buttons and use Morty as your personal speaker!");
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
         console.log(canvas);
+        
+        logo.src = "rm-logo.png";
 
         console.log("setTimeout");
+
+        //Konfetti
+        for (let i: number = 0; i < 200; i++) {
+            let s: konfettiInfo = new konfettiInfo(Math.random() * 800, Math.random() * 600);
+            konfettiClass[i] = s;
+        }
 
         //New Sound Object
         morty = new Morty();
@@ -41,7 +50,7 @@ namespace Abschlussaufgabe {
 
         imgData = crc2.getImageData(0, 0, 800, 600);
 
-        
+
         yourOption();
         animate();
 
@@ -56,14 +65,16 @@ namespace Abschlussaufgabe {
         crc2.clearRect(0, 0, 800, 600);
         for (let i: number = 0; i < 4; i++) {
             document.getElementById("box" + i).style.top = i * (window.innerWidth / 10) + (window.innerWidth / 15) + "px";
-
-        for (let i: number = 0; i < snowClass.length; i++) { //Animation Schnee
-            let s: SnowInfo = snowClass[i];
+        }
+        
+        crc2.putImageData(imgData, 0, 0);
+        crc2.drawImage(logo, 20, 0);
+        for (let i: number = 0; i < konfettiClass.length; i++) { //Animation Schnee
+            let s: konfettiInfo = konfettiClass[i];
 
             s.update();
         }
-        }
-        crc2.putImageData(imgData, 0, 0);
+
         morty.update();
         soundended();
         window.setTimeout(animate, 20);
@@ -103,10 +114,10 @@ namespace Abschlussaufgabe {
         div.style.padding = "30px";
         div.style.width = "30px";
         div.style.height = (window.innerWidth / 100) + "px";
-        
+
         div.style.fontSize = "20px";
         div.style.fontFamily = "Futura";
-        
+
         div.style.position = "absolute";
         div.style.left = "65%";
         div.style.border = "2px solid black";

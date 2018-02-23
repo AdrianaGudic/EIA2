@@ -2,27 +2,34 @@
 Aufgabe: Abschlussaufgabe
 Name: Adriana Gudic
 Matrikel: 256217
-Datum: -
+Datum: 23.02.2018
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     window.addEventListener("load", init);
-    let snowClass = [];
+    let konfettiClass = [];
     let buttons;
     let soundPlay1;
     let soundPlay2;
     let soundPlay3;
     let soundPlay4;
     let imgData;
+    let logo = new Image();
     let morty;
     function init() {
         alert("Click the buttons and use Morty as your personal speaker!");
         let canvas = document.getElementsByTagName("canvas")[0];
         Abschlussaufgabe.crc2 = canvas.getContext("2d");
         console.log(canvas);
+        logo.src = "rm-logo.png";
         console.log("setTimeout");
+        //Konfetti
+        for (let i = 0; i < 200; i++) {
+            let s = new Abschlussaufgabe.konfettiInfo(Math.random() * 800, Math.random() * 600);
+            konfettiClass[i] = s;
+        }
         //New Sound Object
         morty = new Abschlussaufgabe.Morty();
         soundPlay1 = new Abschlussaufgabe.SoundPlay(document.getElementById("sound1"));
@@ -45,12 +52,13 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc2.clearRect(0, 0, 800, 600);
         for (let i = 0; i < 4; i++) {
             document.getElementById("box" + i).style.top = i * (window.innerWidth / 10) + (window.innerWidth / 15) + "px";
-            for (let i = 0; i < snowClass.length; i++) {
-                let s = snowClass[i];
-                s.update();
-            }
         }
         Abschlussaufgabe.crc2.putImageData(imgData, 0, 0);
+        Abschlussaufgabe.crc2.drawImage(logo, 20, 0);
+        for (let i = 0; i < konfettiClass.length; i++) {
+            let s = konfettiClass[i];
+            s.update();
+        }
         morty.update();
         soundended();
         window.setTimeout(animate, 20);
