@@ -69,7 +69,7 @@ namespace Abschlussaufgabe {
         
         crc2.putImageData(imgData, 0, 0);
         crc2.drawImage(logo, 20, 0);
-        for (let i: number = 0; i < konfettiClass.length; i++) { //Animation Schnee
+        for (let i: number = 0; i < konfettiClass.length; i++) {
             let s: konfettiInfo = konfettiClass[i];
 
             s.update();
