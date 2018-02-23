@@ -74,10 +74,6 @@ namespace Abschlussaufgabe {
             crc2.closePath();
             crc2.stroke();
 
-
-
-
-
         }
 
         animateMouth(): void {

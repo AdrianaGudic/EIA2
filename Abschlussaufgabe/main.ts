@@ -11,6 +11,7 @@ namespace Abschlussaufgabe {
 
     export let crc2: CanvasRenderingContext2D;
     window.addEventListener("load", init);
+    let snowClass: SnowInfo[] = [];
     let buttons: string;
     let soundPlay1: SoundPlay;
     let soundPlay2: SoundPlay;
@@ -18,9 +19,10 @@ namespace Abschlussaufgabe {
     let soundPlay4: SoundPlay;
     let imgData: ImageData;
     let morty: Morty;
-
+    
 
     function init(): void {
+        alert("Click the buttons and use Morty as your personal speaker!");
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
         console.log(canvas);
@@ -39,7 +41,7 @@ namespace Abschlussaufgabe {
 
         imgData = crc2.getImageData(0, 0, 800, 600);
 
-
+        
         yourOption();
         animate();
 
@@ -55,13 +57,18 @@ namespace Abschlussaufgabe {
         for (let i: number = 0; i < 4; i++) {
             document.getElementById("box" + i).style.top = i * (window.innerWidth / 10) + (window.innerWidth / 15) + "px";
 
+        for (let i: number = 0; i < snowClass.length; i++) { //Animation Schnee
+            let s: SnowInfo = snowClass[i];
+
+            s.update();
+        }
         }
         crc2.putImageData(imgData, 0, 0);
         morty.update();
         soundended();
         window.setTimeout(animate, 20);
     }
-    
+
     function soundended(): void {
         let soundended1: HTMLAudioElement = <HTMLAudioElement>document.getElementById("sound1");
         let soundended2: HTMLAudioElement = <HTMLAudioElement>document.getElementById("sound2");
@@ -69,15 +76,19 @@ namespace Abschlussaufgabe {
         let soundended4: HTMLAudioElement = <HTMLAudioElement>document.getElementById("sound4");
         if (soundended1.ended == true) {
             morty.sprechen = false;
+            soundended1.load();
         }
         if (soundended2.ended == true) {
             morty.sprechen = false;
+            soundended2.load();
         }
         if (soundended3.ended == true) {
             morty.sprechen = false;
+            soundended3.load();
         }
         if (soundended4.ended == true) {
             morty.sprechen = false;
+            soundended4.load();
         }
     }
 
@@ -87,16 +98,15 @@ namespace Abschlussaufgabe {
         let div: HTMLDivElement = document.createElement("div");
 
         div.innerText = "Sound" + _button;
+        div.style.display = "block";
         div.style.backgroundColor = "#80FF00";
         div.style.padding = "30px";
         div.style.width = "30px";
         div.style.height = (window.innerWidth / 100) + "px";
-        div.style.margin = "9.5px";
+        
         div.style.fontSize = "20px";
-        div.style.textAlign = "center";
         div.style.fontFamily = "Futura";
-        div.style.display = "inline";
-        div.style.textAlign = "center";
+        
         div.style.position = "absolute";
         div.style.left = "65%";
         div.style.border = "2px solid black";
@@ -108,6 +118,7 @@ namespace Abschlussaufgabe {
         div.className = "box";
 
         document.body.appendChild(div);
+
 
     }
 
@@ -129,8 +140,7 @@ namespace Abschlussaufgabe {
         if (target.id == "box3") {
             soundPlay4.playSound();
         }
-
-
     }
+
 
 }
